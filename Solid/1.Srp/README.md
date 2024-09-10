@@ -1,5 +1,6 @@
 Below is a code that violates Single Responsibility Principle. Please refactor and write a test case that covers 100% of the code below.
 
+***HINT:*** First, we need to split the classes into separate files.
 ```
 class Book {
     title: string;

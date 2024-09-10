@@ -1,14 +1,21 @@
-class Main {
-    name: string;
-    constructor(name: string) {
-        this.name = name;
-    }
 
-    printName(): void {
-        console.log(this.name);
+class EmailService {
+    sendEmail(message: string): void {
+        console.log(`Sending email with message: ${message}`);
     }
 }
 
-let mainInstance: Main
-mainInstance = new Main('John Doe');
-mainInstance.printName();
+class SendNotification {
+    private emailService: EmailService;
+
+    constructor() {
+        this.emailService = new EmailService();
+    }
+
+    sendNotification(message: string): void {
+        this.emailService.sendEmail(message);
+    }
+}
+
+const notification = new SendNotification();
+notification.sendNotification("Hello, this is a notification!");
