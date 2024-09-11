@@ -1,3 +1,3 @@
-# exercises-with-design-pattern
+# exercises-with-design-pattern TypeScript
 
-[SOLID design principles](Solid)
+1. [SOLID design principles](Solid)

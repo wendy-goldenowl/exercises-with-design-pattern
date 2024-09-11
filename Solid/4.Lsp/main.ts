@@ -7,6 +7,7 @@
  * Uncomment them to start implementing your solution.
  * Happy coding! 🚀
  */
+
 // interface Machine {
 //     print(document: string): void;
 //     scan(document: string): void;

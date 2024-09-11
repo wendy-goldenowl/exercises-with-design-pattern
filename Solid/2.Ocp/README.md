@@ -78,11 +78,11 @@ class Employee {
     calculateSalary(): number {
         switch (this.type) {
             case EmployeeType.FullTime:
-                return 5000; // Lương cố định cho nhân viên toàn thời gian
+                return 5000;
             case EmployeeType.PartTime:
-                return 3000; // Lương cố định cho nhân viên bán thời gian
+                return 3000;
             case EmployeeType.Intern:
-                return 1000; // Lương cố định cho thực tập sinh
+                return 1000;
             default:
                 throw new Error("Unknown employee type");
         }

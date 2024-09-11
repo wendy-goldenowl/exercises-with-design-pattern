@@ -11,6 +11,9 @@
         "lib": [
             "ES6",
             "DOM"
+        ],
+        "types": [
+            "jest"
         ]
     },
     "include": [
