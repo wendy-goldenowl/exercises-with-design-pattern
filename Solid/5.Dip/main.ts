@@ -8,23 +8,30 @@
  * Happy coding! 🚀
  */
 
-// class EmailService {
-//     sendEmail(message: string): void {
-//         console.log(`Sending email with message: ${message}`);
-//     }
-// }
+// Notification interface
+export interface NotificationService {
+    sendNotification(message: string): void;
+}
 
-// class SendNotification {
-//     private emailService: EmailService;
+// Email notification implementation
+export class EmailNotificationService implements NotificationService {
+    sendNotification(message: string): void {
+        console.log(`Sending email with message: ${message}`);
+    }
+}
 
-//     constructor() {
-//         this.emailService = new EmailService();
-//     }
+// SMS notification implementation
+export class SMSNotificationService implements NotificationService {
+    sendNotification(message: string): void {
+        console.log(`Sending SMS with message: ${message}`);
+    }
+}
 
-//     sendNotification(message: string): void {
-//         this.emailService.sendEmail(message);
-//     }
-// }
+// High-level module depends on abstraction
+export class NotificationManager {
+    constructor(private notificationService: NotificationService) {}
 
-// const notification = new SendNotification();
-// notification.sendNotification("Hello, this is a notification!");
+    sendNotification(message: string): void {
+        this.notificationService.sendNotification(message);
+    }
+}

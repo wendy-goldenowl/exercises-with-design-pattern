@@ -1,49 +1,44 @@
-/**
- * *****************************************
- * 📝 UNCOMMENT THE PRACTICE SECTION CODE YOU WANT BELOW AND START YOUR SOLUTION
- * *****************************************
- *
- * The following lines are currently commented out.
- * Uncomment them to start implementing your solution.
- * Happy coding! 🚀
- */
+// Payment interface to define contract
+export interface Payment {
+    processPayment(amount: number): boolean;
+}
 
-// class PaymentProcessor {
-//     processPayment(amount: number): void {
-//         console.log(`Processing payment of $${amount}`);
-//     }
-// }
-// class CreditCardPayment extends PaymentProcessor {
-//     processPayment(amount: number): void {
-//         console.log(`Processing credit card payment of $${amount}`);
-//         console.log("Validating credit card details...");
-//         console.log("Charging the credit card...");
-//     }
-// }
+// Base abstract class with common logging
+abstract class BasePaymentProcessor implements Payment {
+    protected logPaymentAttempt(amount: number, paymentType: string): void {
+        console.log(`Processing ${paymentType} payment of $${amount}`);
+    }
 
-// class PayPalPayment extends PaymentProcessor {
-//     processPayment(amount: number): void {
-//         console.log(`Processing PayPal payment of $${amount}`);
-//         console.log("Redirecting to PayPal...");
-//         console.log("Completing PayPal transaction...");
-//     }
-// }
-// class CashPayment extends PaymentProcessor {
-//     processPayment(amount: number): void {
-//         console.log(`Processing cash payment of $${amount}`);
-//         throw new Error("Cannot process cash payment online!");
-//     }
-// }
+    abstract processPayment(amount: number): boolean;
+}
 
-// function handlePayment(paymentProcessor: PaymentProcessor, amount: number): void {
-//     paymentProcessor.processPayment(amount);
-// }
+export class CreditCardPayment extends BasePaymentProcessor {
+    processPayment(amount: number): boolean {
+        this.logPaymentAttempt(amount, 'credit card');
+        console.log("Validating credit card details...");
+        console.log("Charging the credit card...");
+        return true;
+    }
+}
 
-// const creditCardPayment = new CreditCardPayment();
-// handlePayment(creditCardPayment, 100); // Output: Processed payment successfully
+export class PayPalPayment extends BasePaymentProcessor {
+    processPayment(amount: number): boolean {
+        this.logPaymentAttempt(amount, 'PayPal');
+        console.log("Redirecting to PayPal...");
+        console.log("Completing PayPal transaction...");
+        return true;
+    }
+}
 
-// const payPalPayment = new PayPalPayment();
-// handlePayment(payPalPayment, 200); // Output: Processed payment successfully
+export class CashPayment extends BasePaymentProcessor {
+    processPayment(amount: number): boolean {
+        this.logPaymentAttempt(amount, 'cash');
+        console.log("Cash payments require in-person transaction");
+        return false;
+    }
+}
 
-// const cashPayment = new CashPayment();
-// handlePayment(cashPayment, 50); // Output: Error: Cannot process cash payment online!
+// Refactored handler that works with the Payment interface
+export function handlePayment(payment: Payment, amount: number): boolean {
+    return payment.processPayment(amount);
+}

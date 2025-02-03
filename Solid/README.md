@@ -12,7 +12,7 @@ Exercises:
 3. Liskov Substitution Principle: Derived classes must be substitutable for their base classes. Functions that use references to base classes must be able to use objects of derived classes without knowing it.
 * [Exercise 1](3.Lsp/)
 4. Interface Segregation Principle: Make fine grained interfaces that are client specific. Clients should not be forced to depend on interfaces they do not use.
-* [Exercise 1](4.Lsp/)
+* [Exercise 1](4.Isp/)
 5. Dependency Inversion Principle: Depend on abstractions, not on concretions. High-level modules should not depend on low-level modules. Both should depend on abstractions. Abstractions should not depend on details. Details should depend on abstractions.
 * [Exercise 1](5.Dip/)
 ---
